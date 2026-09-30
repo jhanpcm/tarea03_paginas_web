@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reserva de Boletos - Bucle While</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Venta de Pasajes / Boletos</h2>
+    <p>Asientos Disponibles en el Autobús: <strong id="stockBoletos">5</strong></p>
+    <form onsubmit="return false;">
+        <label for="nombreInput">Nombres del Pasajero:</label><br>
+        <input type="text" id="nombreInput" placeholder="Ej. Juan"><br><br>
+        <label for="apellidoInput">Apellidos del Pasajero:</label><br>
+        <input type="text" id="apellidoInput" placeholder="Ej. Perez"><br><br>
+        <label for="edadInput">Edad del Pasajero:</label><br>
+        <input type="number" id="edadInput" placeholder="Ej. 25"><br><br>
+        <label for="cantidadBoletosInput">Cantidad de boletos a comprar:</label><br>
+        <input type="number" id="cantidadBoletosInput" placeholder="Ej. 2"><br><br>
+        <button type="button" onclick="procesarReserva()">Emitir Boletos</button>
+    </form>
+    <p id="resultadoReserva"></p>
+    <ul id="listaPasajeros"></ul>
+    <script>
+        let asientosDisponibles = 5;
+        function procesarReserva()
+        {
+            let nombre = document.getElementById("nombreInput").value.trim();
+            let apellido = document.getElementById("apellidoInput").value.trim();
+            let edad = document.getElementById("edadInput").value.trim();
+            let solicitados = parseInt(document.getElementById("cantidadBoletosInput").value);
+            if (nombre === "" || apellido === "" || edad === "")
+            {
+                alert("Por favor, complete el nombre, apellido y edad del pasajero.");
+                return;
+            }
+            if (isNaN(solicitados) || solicitados <= 0)
+            {
+                alert("Ingrese una cantidad válida de boletos.");
+                return;
+            }
+            if (solicitados > asientosDisponibles)
+            {
+                document.getElementById("resultadoReserva").innerText = "No hay suficientes asientos disponibles para procesar esta orden.";
+                return;
+            }
+            document.getElementById("listaPasajeros").innerHTML = "";
+            let boletosEmitidos = 0;
+            while (boletosEmitidos < solicitados)
+            {
+                asientosDisponibles--;
+                boletosEmitidos++;
+                let item = document.createElement("li");
+                item.innerText = "Boleto N° " + boletosEmitidos + " - Pasajero: " + nombre + " " + apellido + " (" + edad + " años)";
+                document.getElementById("listaPasajeros").appendChild(item);
+            }
+            document.getElementById("stockBoletos").innerText = asientosDisponibles;
+            document.getElementById("resultadoReserva").innerText = "Compra exitosa. Se han emitido " + solicitados + " boleto(s).";
+            document.getElementById("cantidadBoletosInput").value = "";
+            document.getElementById("nombreInput").value = "";
+            document.getElementById("apellidoInput").value = "";
+            document.getElementById("edadInput").value = "";
+            document.getElementById("nombreInput").focus();
+            if (asientosDisponibles === 0)
+            {
+                document.getElementById("resultadoReserva").innerText += " (¡Atención: Se han agotado todos los asientos!)";
+            }
+        }
+    </script>
+</body>
+</html>
