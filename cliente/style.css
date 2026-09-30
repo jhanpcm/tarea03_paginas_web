@@ -1,0 +1,37 @@
+body{
+    font-family: Arial;
+    background: #fff8e1;
+    text-align: center;
+    padding-top: 50px;
+}
+form{
+    background: white;
+    width: 340px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px #ccc;
+}
+input{
+    width: 90%;
+    padding: 9px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+button{
+    padding: 10px 15px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover{
+    background: #e68900;
+}
+#resultadoBusqueda{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
