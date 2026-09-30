@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Bucle While</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Validación de Acceso</h2>
+    <form onsubmit="return false;">
+        <label for="claveInput">Contraseña:</label><br>
+        <input type="password" id="claveInput" placeholder="Ej. 1234"><br><br>
+        <button type="button" onclick="validarAcceso()">Ingresar</button>
+        <button type="button" onclick="volverIntentar()">Volver a Intentar</button>
+    </form>
+    <p id="mensaje"></p>
+    <p id="oportunidades"></p>
+    <script>
+        const CLAVE_CORRECTA = "1234";
+        let intentos = 3;
+        function actualizarOportunidades()
+        {
+            document.getElementById("oportunidades").innerText = "Te quedan " + intentos + " oportunidades";
+        }
+        actualizarOportunidades();
+        function validarAcceso()
+        {
+            let clave = document.getElementById("claveInput").value.trim();
+            let acceso = false;
+            let i = 0;
+            while (i < 1)
+            {
+                if (clave === CLAVE_CORRECTA)
+                {
+                    acceso = true;
+                }
+                i++;
+            }
+            if (acceso)
+            {
+                document.getElementById("mensaje").innerText = "Acceso concedido";
+                document.getElementById("oportunidades").innerText = "";
+                return;
+            }
+            intentos--;
+            if (intentos > 0)
+            {
+                document.getElementById("mensaje").innerText = "Contraseña incorrecta";
+                actualizarOportunidades();
+            }
+            else
+            {
+                document.getElementById("mensaje").innerText = "Cuenta bloqueada. Presiona Volver a Intentar";
+                document.getElementById("oportunidades").innerText = "Sin oportunidades";
+            }
+        }
+        function volverIntentar()
+        {
+            intentos = 3;
+            document.getElementById("claveInput").value = "";
+            document.getElementById("mensaje").innerText = "Oportunidades restablecidas";
+            actualizarOportunidades();
+            document.getElementById("claveInput").focus();
+        }
+    </script>
+</body>
+</html>

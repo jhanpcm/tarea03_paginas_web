@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #1a1a2e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    background: #16213e;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+}
+
+label {
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: none;
+    background: #0f3460;
+    color: white;
+    cursor: pointer;
+}
+
+button:last-child {
+    background: #533483;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#mensajeLogin {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#intentosTexto {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #ccc;
+}
